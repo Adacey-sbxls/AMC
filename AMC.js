@@ -6,11 +6,11 @@ elements.bromine = {
   color: ["#401505","#401005","#401107","#3d190a"],
   tempLow: -7.2,
   tempHigh: 58.8,
-  stateLow: frozen_bromine,
-  stateHigh: bromine_gas,
-  state: liquid
-  category: liquids
-  viscosity: 0.944
+  stateLow: "frozen_bromine",
+  stateHigh: "bromine_gas",
+  state: "liquid",
+  category: "liquids",
+  viscosity: 0.944,
 	reactions: {
 		"aluminum": {elem1:null, elem2:"aluminum_bromide" },
     "water": {elem1:null, elem2:"hydrobromic_acid"},
