@@ -3,6 +3,7 @@
 //COMMUNITY R74ncord PROJECT TO MOD EVERY CHEMICAL ELEMENT INTO SANDBOXELS
 console.log("vro just play the mod")
 elements.bromine = {
+  density: 3102.8,
   color: ["#401505","#401005","#401107","#3d190a"],
   tempLow: -7.2,
   tempHigh: 58.8,
