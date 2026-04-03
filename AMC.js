@@ -48,6 +48,8 @@ elements.bromine = {
 	color: ["#401505","#401005","#401107","#3d190a"],
 	tempLow: -7.2,
 	tempHigh: 58.8,
+	stateLow: "frozen_bromine",
+	stateHigh: "bromine_gas",
 	state: "liquid",
 	category: "liquids",
     behavior: behaviors.LIQUID,
@@ -165,7 +167,7 @@ elements.molten_ytterbium_oxide = {
 	behavior: behaviors.MOLTEN,
 	fireColor: ["#39ff14", "#00913f"],
 };
-//Ytterbium Hydride (YbH₃)
+//Ytterbium Hydride (YbH2)
 elements.ytterbium_hydride = {
 	density: 7100,
 	color: ["#23282b", "#474b4e"],
