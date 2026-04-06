@@ -54,12 +54,6 @@ elements.bromine = {
 	category: "liquids",
     behavior: behaviors.LIQUID,
 	viscosity: 0.944,
-	if (langCode === "xem") {
-    	lang.bromine = "🟧☠️💧";
-},
-	if (langCode === "qha") {
-    	lang.bromine = "samocomomae-e-alama";
-},
 	reactions: {
 		"water": {elem1:null, elem2:"hydrobromic_acid"},
 		"propane": {elem1:"hydrobromic_acid", elem2:"brominated_hydrocarbons"},
@@ -95,9 +89,6 @@ elements.ytterbium = {
 	behavior: behaviors.WALL,
 	conduct: 0.6,
 	hardness: 0.2,
-	if (langCode === "qha") {
-    	lang.ytterbium = "paemaelama-e-a-i-ehehalacihalama-elama";
-},
 	reactions: {
 	  "water": {elem1:"ytterbium_hydroxide", elem2:"hydrogen"},
 	  "hydrogen": {elem1:"ytterbium_hydride", elem2:null},
@@ -236,3 +227,12 @@ elements.molten_ytterbium_bromide = {
 };
 //Ytterbium stuff by Ytterbium
 elements.acid.name="hydrochloric_acid"
+if (langCode === "xem") {
+    lang.bromine = "🟧☠️💧";
+},
+if (langCode === "qha") {
+    lang.bromine = "samocomomae-e-alama";
+},
+if (langCode === "qha") {
+    lang.ytterbium = "paemaelama-e-a-i-ehehalacihalama-elama";
+},
