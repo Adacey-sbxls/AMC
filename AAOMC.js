@@ -220,7 +220,7 @@ elements.molten_ytterbium_chloride = {
 //Ytterbium Bromide (YbBr₃)
 elements.ytterbium_bromide = {
 	density: 5350,
-	color: ["#ffffff", "#f2f0eb"],
+	color: ["#e8e231", "#f0edaa"],
 	tempHigh: 300,
 	stateHigh: "molten_ytterbium_bromide",
 	state: "solid",
@@ -229,7 +229,7 @@ elements.ytterbium_bromide = {
 };
 elements.molten_ytterbium_bromide = {
 	density: 5070,
-	color: ["#fbceb1", "#ffaa66"],
+	color: ["#e89331", "#e6be91"],
 	temp: 500,
 	tempLow: 300,
 	stateLow: "ytterbium_bromide",
