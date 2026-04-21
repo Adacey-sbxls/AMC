@@ -565,3 +565,96 @@ elements.transuranium_explosion = {
 	hidden: true,
 	noMix: true
 }
+// Nuclear fusion stuff by Cube14 (Helium-3)
+if (!elements?.hydrogen?.reactions) elements.hydrogen.reactions = {}
+elements.hydrogen.reactions.hydrogen = { elem1: "positron", elem2: "deuterium", chance: 0.2, tempMin: 10000, temp1: 20000, temp2: 20000 }
+elements.deuterium = {
+	color: "#558bcf",
+	behavior: behaviors.GAS,
+	reactions: {
+		"oxygen": { elem1: null, elem2: "steam", tempMin: 500, tempMax: 3000 },
+		"hydrogen": { elem1: "light", elem2: "helium_3", tempMin: 10000, temp1: 20000, temp2: 20000 },
+		"nitrogen": { elem1: "neutron", elem2: "oxygen", tempMin: 10000 },
+		"sulfur": { elem1: "neutron", elem2: "chlorine", tempMin: 10000 },
+		"neon": { elem1: "neutron", elem2: "sodium", tempMin: 10000 },
+		"fire": { elem1: "explosion", chance: 0.005 },
+		"carbon_dioxide": { elem1: ["methane", null], elem2: "steam", tempMin: 300 },
+		"charcoal": { elem1: null, elem2: "oil", tempMin: 400, chance: 0.1 },
+		"deuterium": {
+			func: (pixel1, pixel2) => {
+				let reactionPath;
+				if (Math.random() <= 0.5) {
+					changePixel(pixel1, "proton")
+					reactionPath = "tritium"
+				} else {
+					changePixel(pixel1, "neutron")
+					reactionPath = "helium_3"
+				}
+				changePixel(pixel2, reactionPath)
+			}, tempMin: 10000, temp1: 20000, temp2: 20000
+		},
+		"tritium": { elem1: "neutron", elem2: "helium", tempMin: 10000, temp1: 20000, temp2: 20000 }
+	},
+	category: "gases",
+	burn: 100,
+	burnTime: 2,
+	burnInto: ["fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "steam"],
+	fireColor: "#637980",
+	tempLow: -253,
+	state: "gas",
+	density: 0.090,
+	conduct: 0.02,
+	colorOn: "#7d15e5"
+}
+
+elements.helium_3 = {
+	color: "#a69494",
+	behavior: behaviors.GAS,
+	category: "gases",
+	tempLow: -272.20,
+	state: "gas",
+	density: 0.1786,
+	conduct: 0.02,
+	colorOn: "#f1a1ff",
+	reactions: {
+		"helium_3": { elem1: "light", elem2: "helium", tempMin: 10000, temp1: 20000, temp2: 20000 }
+	}
+}
+
+elements.tritium = {
+	color: "#558bcf",
+	behavior: behaviors.GAS,
+	reactions: {
+		"oxygen": { elem1: null, elem2: "rad_steam", tempMin: 500, tempMax: 3000 },
+		"hydrogen": { elem1: "light", elem2: "helium", tempMin: 10000, temp1: 20000, temp2: 20000 },
+		"nitrogen": { func: (_, pixel2) => releaseElement(pixel2, "neutron", 2), elem2: "oxygen", tempMin: 10000 },
+		"sulfur": { func: (_, pixel2) => releaseElement(pixel2, "neutron", 2), elem2: "chlorine", tempMin: 10000 },
+		"neon": { func: (_, pixel2) => releaseElement(pixel2, "neutron", 2), elem2: "sodium", tempMin: 10000 },
+		"fire": { elem1: "explosion", chance: 0.005 },
+		"carbon_dioxide": { elem1: ["methane", null], elem2: "steam", tempMin: 300 },
+		"charcoal": { elem1: null, elem2: "oil", tempMin: 400, chance: 0.1 },
+		"deuterium": { elem1: "neutron", elem2: "helium", tempMin: 10000, temp1: 20000, temp2: 20000 },
+		"tritium": { func: (_, pixel2) => releaseElement(pixel2, "neutron", 2), elem2: "helium", tempMin: 10000, temp1: 20000, temp2: 20000 }
+	},
+	category: "gases",
+	burn: 100,
+	burnTime: 2,
+	burnInto: ["fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "steam"],
+	fireColor: "#637980",
+	tempLow: -253,
+	state: "gas",
+	density: 0.090,
+	conduct: 0.02,
+	colorOn: "#7d15e5",
+	tick(pixel) {
+		if (Math.random() <= 0.001) {
+			changePixel(pixel, "helium_3")
+		}
+		if (Math.random() <= 0.01) {
+			releaseElement(pixel, "radiation")
+		}
+	}
+}
+
+if (!elements?.helium?.reactions) elements.helium.reactions = {}
+elements.helium.reactions.helium = { elem1: ["diamond", "charcoal"], elem2: "light", chance: 0.0001, tempMin: 10000, temp1: 20000, temp2: 20000 }
